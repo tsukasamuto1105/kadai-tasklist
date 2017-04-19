@@ -2,11 +2,10 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   
   def index
-    @tasks = Task.all
+    @tasks = Task.order(created_at: :desc).page(params[:page]).per(3)
   end
   
   def show
-    set_task
   end
   
   def new
@@ -26,7 +25,6 @@ class TasksController < ApplicationController
   end
   
   def edit
-    set_task
   end
   
   def update
@@ -41,7 +39,6 @@ class TasksController < ApplicationController
   end
   
   def destroy
-    set_task
     @task.destroy
     
     flash[:success] = 'Taskは正常に削除されました'
@@ -54,7 +51,6 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
   
-  # Strong Parameter
   def task_params
     params.require(:task).permit(:content, :status)
   end
