@@ -1,12 +1,15 @@
 <% if logged_in? %>
+
   <div class="row">
     <aside class="col-md-4">
       
 <%= form_for(@task) do |f| %>
 
         <div class="form-group">
-          
+<p>タスク</p> 
 <%= f.text_area :content, class: 'form-control', rows: 5 %>
+<p>ステータス</p> 
+<%= f.text_area :status, class: 'form-control', rows: 5 %>
 
         </div>
         
@@ -27,9 +30,9 @@
   <div class="center jumbotron">
     <div class="text-center">
       <h1>Welcome to the Tasklist</h1>
-    
+      
 <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
-    
+
     </div>
   </div>
 <% end %>

@@ -8,14 +8,20 @@
       </div>
       <div class="panel-body">
         <img class="media-object img-rounded img-responsive" src="
-<%= gravatar_url(@user, { size: 500 }) %>
+<%= gravatar_url(@user, { size: 100 }) %>
 " alt="">
       </div>
     </div>
   </aside>
+  
   <div class="col-xs-8">
     <ul class="nav nav-tabs nav-justified">
       <li><a href="#">Tasklist</a></li>
     </ul>
   </div>
+    
+     <div class="col-xs-8">
+<%= render 'tasks/tasks', tasks: @tasks, user: @user %>
+    </div>
+    
 </div>
